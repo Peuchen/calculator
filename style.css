@@ -7,3 +7,9 @@
     border: 1px solid black;
     padding: 10px;
 }
+
+#display {
+    grid-column-start: 1;
+    grid-column-end: 5;
+    border: 1px solid black;
+}
