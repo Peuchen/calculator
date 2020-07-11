@@ -1,3 +1,5 @@
+let currentSum = 0;
+
 function operate(operator, a, b) {
     return operator(a, b);
 }
