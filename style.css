@@ -18,3 +18,10 @@
 #equals, #clear, .operator, .number {
     border: 1px solid black;
 }
+
+#equals, .operator {
+    grid-column-start: 4;
+    grid-column-end: 5;
+}
+
+
