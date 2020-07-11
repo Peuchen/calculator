@@ -26,7 +26,7 @@ function changeDisplay() {
     numbers.forEach((number) => {
         number.addEventListener('click', (e) => {
             let currentNumber = number.textContent;
-            document.getElementById("display").textContent = currentNumber; 
+            document.getElementById("display").textContent += currentNumber; 
         });
     });
 };
