@@ -18,6 +18,16 @@ function divide (a, b) {
 	return a / b;
 }
 
+const numbers = document.querySelectorAll('.number');
+    
+function changeDisplay() {
+    numbers.forEach((numbers) => {
+        number.addEventListener('click', (e) => {
+            let currentNumber = this.textContent();
+            document.getElementById("display").textContent = currentNumber; 
+        });
+    });
+};
 
 /* function multiply (array) {
 	return array.reduce(((total, newValue) => total * newValue), 1);
