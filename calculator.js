@@ -21,13 +21,15 @@ function divide (a, b) {
 const numbers = document.querySelectorAll('.number');
     
 function changeDisplay() {
-    numbers.forEach((numbers) => {
+    numbers.forEach((number) => {
         number.addEventListener('click', (e) => {
-            let currentNumber = this.textContent();
+            let currentNumber = number.textContent;
             document.getElementById("display").textContent = currentNumber; 
         });
     });
 };
+
+changeDisplay();
 
 /* function multiply (array) {
 	return array.reduce(((total, newValue) => total * newValue), 1);
