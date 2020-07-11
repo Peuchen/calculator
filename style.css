@@ -8,7 +8,6 @@
     padding: 10px;
     grid-gap: 10px;
 }
-}
 
 #display {
     grid-column-start: 1;
@@ -16,3 +15,6 @@
     border: 1px solid black;
 }
 
+#equals, #clear, .operator, .number {
+    border: 1px solid black;
+}
