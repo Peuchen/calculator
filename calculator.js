@@ -1,3 +1,7 @@
+function operate(operator, a, b) {
+    return operator(a, b);
+}
+
 function add (a, b) {
 	return a + b;
 }
