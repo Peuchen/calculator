@@ -3,6 +3,16 @@ const operators = document.querySelectorAll('.operator');
 let currentValue = 0;
 let newValue = 0;
 
+function changeDisplay() {
+    numbers.forEach((number) => {
+        number.addEventListener('click', (e) => {
+            let currentNumber = number.textContent;
+            document.getElementById("display").textContent += currentNumber;
+            newValue = Number(document.getElementById("display").textContent);
+        });
+    });
+};
+
 function operate(operator, currentValue, newValue) {
     return operator(currentValue, newValue);
 }
@@ -22,16 +32,6 @@ function multiply (currentValue, newValue) {
 function divide (currentValue, newValue) {
 	return currentValue / newValue;
 }
-
-function changeDisplay() {
-    numbers.forEach((number) => {
-        number.addEventListener('click', (e) => {
-            let currentNumber = number.textContent;
-            document.getElementById("display").textContent += currentNumber;
-            newValue = Number(document.getElementById("display").textContent);
-        });
-    });
-};
 
 changeDisplay();
 
