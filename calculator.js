@@ -16,6 +16,7 @@ function changeDisplay() {
 function operate(operator, currentValue, newValue) {
     operators.forEach((operator) => {
         operator.addEventListener('click', (e) => {
+            currentValue = Number(document.getElementById("display").textContent);
             switch(operator.id) {
                 case "add":
                     add();
