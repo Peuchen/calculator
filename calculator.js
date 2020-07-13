@@ -23,12 +23,12 @@ function divide (currentValue, newValue) {
 	return currentValue / newValue;
 }
 
-    
 function changeDisplay() {
     numbers.forEach((number) => {
         number.addEventListener('click', (e) => {
             let currentNumber = number.textContent;
-            document.getElementById("display").textContent += currentNumber; 
+            document.getElementById("display").textContent += currentNumber;
+            newValue = Number(document.getElementById("display").textContent);
         });
     });
 };
