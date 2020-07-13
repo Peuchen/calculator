@@ -1,26 +1,28 @@
-let currentSum = 0;
-
-function operate(operator, a, b) {
-    return operator(a, b);
-}
-
-function add (a, b) {
-	return a + b;
-}
-
-function subtract (a, b) {
-	return a - b;
-}
-
-function multiply (a, b) {
-	return a * b;
-}
-
-function divide (a, b) {
-	return a / b;
-}
-
 const numbers = document.querySelectorAll('.number');
+const operators = document.querySelectorAll('.operator');
+let currentValue = 0;
+let newValue = 0;
+
+function operate(operator, currentValue, newValue) {
+    return operator(currentValue, newValue);
+}
+
+function add (currentValue, newValue) {
+	return currentValue + newValue;
+}
+
+function subtract (currentValue, newValue) {
+	return currentValue - newValue;
+}
+
+function multiply (currentValue, newValue) {
+	return currentValue * newValue;
+}
+
+function divide (currentValue, newValue) {
+	return currentValue / newValue;
+}
+
     
 function changeDisplay() {
     numbers.forEach((number) => {
