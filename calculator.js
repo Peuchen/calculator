@@ -1,5 +1,4 @@
-const numbers = document.querySelectorAll('.operand');
-const operators = document.querySelectorAll('.operator');
+const buttons = document.querySelectorAll("button");
 const display = document.getElementById("display");
 let displayValue = '0'
 let firstOperand = null;
@@ -9,14 +8,59 @@ let secondOperator = null;
 let result = 0;
 
 
-
 function changeDisplay() {
     display.textContent = displayValue;
 };
 
 changeDisplay();
 
-function operate() {
+const processInput = function() {
+    buttons.forEach((button) => {
+        button.addEventListener('click', (e) => {
+            if(button.className === 'operand') {
+                if(firstOperand === null) {
+                    firstOperand = button.value;
+                }
+                else {
+                    firstOperand += button.value;
+                };
+                console.log(firstOperand);
+            }
+            else if(button.value === 'add') {
+                firstOperator = add;
+                console.log(firstOperator);
+            }
+            else if(button.value === 'subtract') {
+                firstOperator = subtract;
+                console.log(firstOperator);
+            }
+            else if(button.value === 'multiply') {
+                firstOperator = multiply;
+                console.log(firstOperator);
+            }
+            else if(button.value === 'divide') {
+                firstOperator = divide;
+                console.log(firstOperator);
+            }
+            else if(button.value === 'equals') {
+                if(firstOperator != null) {
+                    secondOperator = 'equals';
+                }
+            }
+            else if(button.value === 'clear') {
+                displayValue = '0'
+                firstOperand = null;
+                secondOperand = null;
+                firstOperator = null;
+                secondOperator = null;
+            }
+        });
+    }); 
+}
+
+processInput();
+
+/* function operate() {
     operators.forEach((operator) => {
         operator.addEventListener('click', (e) => {
             currentValues.push(Number(display.textContent));
@@ -32,9 +76,9 @@ function operate() {
         });
     });
 
-};
+}; */
 
-function inputOperand() {
+/* function inputOperand() {
     numbers.forEach((operand) => {
         operand.addEventListener('click', (e) => {
             if(firstOperator === null) {
@@ -59,61 +103,30 @@ function inputOperand() {
         });
         changeDisplay();
     });
-}
-
-const calculate = function() {
-    switch(action) {
-        case "add":
-            add();
-            break;
-        case "subtract":
-            subtract();
-            break;
-        case "multiply":
-            multiply();
-            break;
-        case "divide":
-            divide();
-            break;
-    };
-};
+} */
 
 const add = function() {
     console.log("test1");
-    reducer = (accumulator, currentValue) => accumulator + currentValue;
-    result = currentValues.reduce(reducer);
-    currentValues = [];
-    currentValues.push(Number(display.textContent));
+    
 }
 
 const subtract = function() {
     console.log("test2");
-    reducer = (accumulator, currentValue) => accumulator - currentValue;
-    result = currentValues.reduce(reducer);
-    currentValues = [];
-    currentValues.push(Number(display.textContent));
 }
 
 const multiply = function() {
     console.log("test3");
-    reducer = (accumulator, currentValue) => accumulator * currentValue;
-    result = currentValues.reduce(reducer);
-    currentValues = [];
-    currentValues.push(Number(display.textContent));
 }
 
 const divide = function() {
     console.log("test4");
-    reducer = (accumulator, currentValue) => accumulator / currentValue;
-    result = currentValues.reduce(reducer);
-    currentValues = [];
-    currentValues.push(Number(display.textContent));
 }
 
-
-operate();
-
-
+/* reducer = (accumulator, currentValue) => accumulator / currentValue;
+result = currentValues.reduce(reducer);
+currentValues = [];
+currentValues.push(Number(display.textContent));
+ */
 /* function multiply (array) {
 	return array.reduce(((total, newValue) => total * newValue), 1);
 }
