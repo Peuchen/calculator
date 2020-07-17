@@ -32,7 +32,7 @@ const processInput = function() {
                         displayValue += button.value;
                     }
                 }
-                else if(operator !== null) {
+                else {
                     if(displayValue === firstOperand) {
                         displayValue = button.value;
                     }
@@ -45,56 +45,40 @@ const processInput = function() {
             else if(operator === null) {
                 if(button.value === 'add') {
                     operator = 'add';
-                    firstOperand = displayValue;
                 }
                 else if(button.value === 'subtract') {
                     operator = 'subtract';
-                    firstOperand = displayValue;
                 }
                 else if(button.value === 'multiply') {
                     operator = 'multiply';
-                    firstOperand = displayValue;
                 }
                 else if(button.value === 'divide') {
                     operator = 'divide';
-                    firstOperand = displayValue;
                 }
+                firstOperand = displayValue;
                 changeDisplay();
             }
             else if(operator !== null) {
+                secondOperand = displayValue;
+                operate(operator);
                 if(button.value === 'add') {
-                    secondOperand = displayValue;
-                    operate(operator);
-                    displayValue = result;
                     operator = 'add';
                 }
                 else if(button.value === 'subtract') {
-                    secondOperand = displayValue;
-                    operate(operator);
-                    displayValue = result;
                     operator = 'subtract';
                 }
                 else if(button.value === 'multiply') {
-                    secondOperand = displayValue;
-                    operate(operator);
-                    displayValue = result;
                     operator = 'multiply';
                 }
                 else if(button.value === 'divide') {
-                    secondOperand = displayValue;
-                    operate(operator);
-                    displayValue = result;
                     operator = 'divide';
                 }
                 else if(button.value === 'equal') {
-                    secondOperand = displayValue;
-                    operate(operator);
-                    displayValue = result;
-                    operator = 'equal';
+                    operator = null;
                 }
-                changeDisplay();
-
+                displayValue = result;
                 firstOperand = result;
+                changeDisplay();
             }
         });
     }); 
