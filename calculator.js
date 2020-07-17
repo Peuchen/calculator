@@ -128,33 +128,9 @@ const operate = function(operator) {
             break;
         case 'divide':
             result = Number(firstOperand) / Number(secondOperand);
+            if(Number(secondOperand) === 0) {
+                result = "Don't divide by 0 ;)";
+            }
             break;
     }
 }
-
-/* function inputOperand() {
-    numbers.forEach((operand) => {
-        operand.addEventListener('click', (e) => {
-            if(firstOperator === null) {
-                if(displayValue === '0' || displayValue === 0) {
-                    //1st click - handles first operand input
-                    displayValue = operand;
-                } else if(displayValue === firstOperand) {
-                    //starts new operation after inputequal()
-                    displayValue = operand;
-                } else {
-                    displayValue += operand;
-                }
-            } 
-            else {
-                //3rd/5th click - inputs to secondOperand
-                if(displayValue === firstOperand) {
-                    displayValue = operand;
-                } else {
-                    displayValue += operand;
-                }
-            }
-        });
-        changeDisplay();
-    });
-} */
