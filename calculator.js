@@ -3,8 +3,7 @@ const display = document.getElementById("display");
 let displayValue = '0'
 let firstOperand = null;
 let secondOperand = null;
-let firstOperator = null;
-let secondOperator = null;
+let operator = null;
 let result = 0;
 
 function changeDisplay() {
@@ -20,12 +19,12 @@ const processInput = function() {
                 displayValue = '0';
                 firstOperand = null;
                 secondOperand = null;
-                firstOperator = null;
-                secondOperator = null;
+                operator = null;
+            
                 changeDisplay();
             }
             else if(button.className === 'operand') {
-                if(firstOperator === null) {
+                if(operator === null) {
                     if(displayValue === '0') {
                         displayValue = button.value;
                     }
@@ -33,7 +32,7 @@ const processInput = function() {
                         displayValue += button.value;
                     }
                 }
-                else if(firstOperator !== null) {
+                else if(operator !== null) {
                     if(displayValue === firstOperand) {
                         displayValue = button.value;
                     }
@@ -43,58 +42,58 @@ const processInput = function() {
                 }
                 changeDisplay();
             }
-            else if(firstOperator === null) {
+            else if(operator === null) {
                 if(button.value === 'add') {
-                    firstOperator = 'add';
+                    operator = 'add';
                     firstOperand = displayValue;
                 }
                 else if(button.value === 'subtract') {
-                    firstOperator = 'subtract';
+                    operator = 'subtract';
                     firstOperand = displayValue;
                 }
                 else if(button.value === 'multiply') {
-                    firstOperator = 'multiply';
+                    operator = 'multiply';
                     firstOperand = displayValue;
                 }
                 else if(button.value === 'divide') {
-                    firstOperator = 'divide';
+                    operator = 'divide';
                     firstOperand = displayValue;
                 }
                 changeDisplay();
             }
-            else if(firstOperator !== null) {
+            else if(operator !== null) {
                 if(button.value === 'add') {
                     secondOperand = displayValue;
-                    secondOperator = 'add';
-                    operate(firstOperator);
+                    operate(operator);
                     displayValue = result;
+                    operator = 'add';
                 }
                 else if(button.value === 'subtract') {
                     secondOperand = displayValue;
-                    secondOperator = 'subtract';
-                    operate(firstOperator);
+                    operate(operator);
                     displayValue = result;
+                    operator = 'subtract';
                 }
                 else if(button.value === 'multiply') {
                     secondOperand = displayValue;
-                    secondOperator = 'multiply';
-                    operate(firstOperator);
+                    operate(operator);
                     displayValue = result;
+                    operator = 'multiply';
                 }
                 else if(button.value === 'divide') {
                     secondOperand = displayValue;
-                    secondOperator = 'divide';
-                    operate(firstOperator);
+                    operate(operator);
                     displayValue = result;
+                    operator = 'divide';
                 }
                 else if(button.value === 'equal') {
                     secondOperand = displayValue;
-                    secondOperator = 'equal';
-                    operate(firstOperator);
+                    operate(operator);
                     displayValue = result;
+                    operator = 'equal';
                 }
                 changeDisplay();
-                firstOperator = secondOperator;
+
                 firstOperand = result;
             }
         });
