@@ -1,5 +1,4 @@
 const buttons = document.querySelectorAll("button");
-const operandi = document.querySelectorAll(".operand");
 const display = document.getElementById("display");
 let displayValue = '0'
 let firstOperand = null;
@@ -7,7 +6,6 @@ let secondOperand = null;
 let firstOperator = null;
 let secondOperator = null;
 let result = 0;
-
 
 function changeDisplay() {
     display.textContent = displayValue;
@@ -24,7 +22,6 @@ const processInput = function() {
                 secondOperand = null;
                 firstOperator = null;
                 secondOperator = null;
-                console.log(firstOperand);
                 changeDisplay();
             }
             else if(button.className === 'operand') {
@@ -49,22 +46,18 @@ const processInput = function() {
             else if(firstOperator === null) {
                 if(button.value === 'add') {
                     firstOperator = 'add';
-                    console.log(firstOperator);
                     firstOperand = displayValue;
                 }
                 else if(button.value === 'subtract') {
                     firstOperator = 'subtract';
-                    console.log(firstOperator);
                     firstOperand = displayValue;
                 }
                 else if(button.value === 'multiply') {
                     firstOperator = 'multiply';
-                    console.log(firstOperator);
                     firstOperand = displayValue;
                 }
                 else if(button.value === 'divide') {
                     firstOperator = 'divide';
-                    console.log(firstOperator);
                     firstOperand = displayValue;
                 }
                 changeDisplay();
@@ -74,35 +67,30 @@ const processInput = function() {
                     secondOperand = displayValue;
                     secondOperator = 'add';
                     operate(firstOperator);
-                    console.log(firstOperator);
                     displayValue = result;
                 }
                 else if(button.value === 'subtract') {
                     secondOperand = displayValue;
                     secondOperator = 'subtract';
                     operate(firstOperator);
-                    console.log(secondOperator);
                     displayValue = result;
                 }
                 else if(button.value === 'multiply') {
                     secondOperand = displayValue;
                     secondOperator = 'multiply';
                     operate(firstOperator);
-                    console.log(secondOperator);
                     displayValue = result;
                 }
                 else if(button.value === 'divide') {
                     secondOperand = displayValue;
                     secondOperator = 'divide';
                     operate(firstOperator);
-                    console.log(secondOperator);
                     displayValue = result;
                 }
                 else if(button.value === 'equal') {
                     secondOperand = displayValue;
                     secondOperator = 'equal';
                     operate(firstOperator);
-                    console.log(secondOperator);
                     displayValue = result;
                 }
                 changeDisplay();
