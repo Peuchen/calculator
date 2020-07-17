@@ -20,29 +20,21 @@ const processInput = function() {
                 firstOperand = null;
                 secondOperand = null;
                 operator = null;
-            
+                result = 0;
                 changeDisplay();
             }
             else if(button.className === 'operand') {
-                if(operator === null) {
-                    if(displayValue === '0') {
-                        displayValue = button.value;
-                    }
-                    else {
-                        displayValue += button.value;
-                    }
+                if(displayValue === '0' || displayValue === firstOperand) {
+                    displayValue = button.value;
                 }
                 else {
-                    if(displayValue === firstOperand) {
-                        displayValue = button.value;
-                    }
-                    else {
-                        displayValue += button.value;
-                    }
+                    displayValue += button.value;
                 }
                 changeDisplay();
             }
             else if(operator === null) {
+                firstOperand = displayValue;
+                changeDisplay();
                 if(button.value === 'add') {
                     operator = 'add';
                 }
@@ -55,12 +47,13 @@ const processInput = function() {
                 else if(button.value === 'divide') {
                     operator = 'divide';
                 }
-                firstOperand = displayValue;
-                changeDisplay();
             }
             else if(operator !== null) {
                 secondOperand = displayValue;
                 operate(operator);
+                displayValue = result;
+                firstOperand = result;
+                changeDisplay();
                 if(button.value === 'add') {
                     operator = 'add';
                 }
@@ -76,9 +69,6 @@ const processInput = function() {
                 else if(button.value === 'equal') {
                     operator = null;
                 }
-                displayValue = result;
-                firstOperand = result;
-                changeDisplay();
             }
         });
     }); 
