@@ -18,7 +18,16 @@ changeDisplay();
 const processInput = function() {
     buttons.forEach((button) => {
         button.addEventListener('click', (e) => {
-            if(button.className === 'operand') {
+            if(button.value === 'clear') {
+                displayValue = '0';
+                firstOperand = null;
+                secondOperand = null;
+                firstOperator = null;
+                secondOperator = null;
+                console.log(firstOperand);
+                changeDisplay();
+            }
+            else if(button.className === 'operand') {
                 if(firstOperator === null) {
                     if(displayValue === '0') {
                         displayValue = button.value;
@@ -89,72 +98,22 @@ const processInput = function() {
                     console.log(secondOperator);
                     displayValue = result;
                 }
+                else if(button.value === 'equal') {
+                    secondOperand = displayValue;
+                    secondOperator = 'equal';
+                    operate(firstOperator);
+                    console.log(secondOperator);
+                    displayValue = result;
+                }
                 changeDisplay();
                 firstOperator = secondOperator;
                 firstOperand = result;
-            }
-            else if(button.value === 'equals' && firstOperator !== null) {
-                secondOperator = 'equals';
-                console.log(secondOperator);
-            }
-            else if(button.value === 'clear') {
-                displayValue = '0';
-                firstOperand = null;
-                secondOperand = null;
-                firstOperator = null;
-                secondOperator = null;
-                console.log(firstOperand);
             }
         });
     }); 
 }
 
 processInput();
-
-/* function operate() {
-    operators.forEach((operator) => {
-        operator.addEventListener('click', (e) => {
-            currentValues.push(Number(display.textContent));
-            console.log(currentValues);
-            if(!action) {
-                action = operator.id;
-            }
-            else if (action) {
-                calculate();
-                action = operator.id;
-                display.textContent = result;
-            }
-        });
-    });
-
-}; */
-
-/* function inputOperand() {
-    numbers.forEach((operand) => {
-        operand.addEventListener('click', (e) => {
-            if(firstOperator === null) {
-                if(displayValue === '0' || displayValue === 0) {
-                    //1st click - handles first operand input
-                    displayValue = operand;
-                } else if(displayValue === firstOperand) {
-                    //starts new operation after inputEquals()
-                    displayValue = operand;
-                } else {
-                    displayValue += operand;
-                }
-            } 
-            else {
-                //3rd/5th click - inputs to secondOperand
-                if(displayValue === firstOperand) {
-                    displayValue = operand;
-                } else {
-                    displayValue += operand;
-                }
-            }
-        });
-        changeDisplay();
-    });
-} */
 
 const operate = function(operator) {
     switch(operator){
@@ -173,16 +132,29 @@ const operate = function(operator) {
     }
 }
 
-
-/* reducer = (accumulator, currentValue) => accumulator / currentValue;
-result = currentValues.reduce(reducer);
-currentValues = [];
-currentValues.push(Number(display.textContent));
- */
-/* function multiply (array) {
-	return array.reduce(((total, newValue) => total * newValue), 1);
-}
-
-function divide (array) {
-	return array.reduce(((total, newValue) => total / newValue));
+/* function inputOperand() {
+    numbers.forEach((operand) => {
+        operand.addEventListener('click', (e) => {
+            if(firstOperator === null) {
+                if(displayValue === '0' || displayValue === 0) {
+                    //1st click - handles first operand input
+                    displayValue = operand;
+                } else if(displayValue === firstOperand) {
+                    //starts new operation after inputequal()
+                    displayValue = operand;
+                } else {
+                    displayValue += operand;
+                }
+            } 
+            else {
+                //3rd/5th click - inputs to secondOperand
+                if(displayValue === firstOperand) {
+                    displayValue = operand;
+                } else {
+                    displayValue += operand;
+                }
+            }
+        });
+        changeDisplay();
+    });
 } */
