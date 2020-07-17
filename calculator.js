@@ -1,4 +1,5 @@
 const buttons = document.querySelectorAll("button");
+const operandi = document.querySelectorAll(".operand");
 const display = document.getElementById("display");
 let displayValue = '0'
 let firstOperand = null;
@@ -18,41 +19,91 @@ const processInput = function() {
     buttons.forEach((button) => {
         button.addEventListener('click', (e) => {
             if(button.className === 'operand') {
-                if(firstOperand === null) {
-                    firstOperand = button.value;
+                if(firstOperator === null) {
+                    if(displayValue === '0') {
+                        displayValue = button.value;
+                    }
+                    else {
+                        displayValue += button.value;
+                    }
                 }
-                else {
-                    firstOperand += button.value;
-                };
-                console.log(firstOperand);
-            }
-            else if(button.value === 'add') {
-                firstOperator = add;
-                console.log(firstOperator);
-            }
-            else if(button.value === 'subtract') {
-                firstOperator = subtract;
-                console.log(firstOperator);
-            }
-            else if(button.value === 'multiply') {
-                firstOperator = multiply;
-                console.log(firstOperator);
-            }
-            else if(button.value === 'divide') {
-                firstOperator = divide;
-                console.log(firstOperator);
-            }
-            else if(button.value === 'equals') {
-                if(firstOperator != null) {
-                    secondOperator = 'equals';
+                else if(firstOperator !== null) {
+                    if(displayValue === firstOperand) {
+                        displayValue = button.value;
+                    }
+                    else {
+                        displayValue += button.value;
+                    }
                 }
+                changeDisplay();
+            }
+            else if(firstOperator === null) {
+                if(button.value === 'add') {
+                    firstOperator = 'add';
+                    console.log(firstOperator);
+                    firstOperand = displayValue;
+                }
+                else if(button.value === 'subtract') {
+                    firstOperator = 'subtract';
+                    console.log(firstOperator);
+                    firstOperand = displayValue;
+                }
+                else if(button.value === 'multiply') {
+                    firstOperator = 'multiply';
+                    console.log(firstOperator);
+                    firstOperand = displayValue;
+                }
+                else if(button.value === 'divide') {
+                    firstOperator = 'divide';
+                    console.log(firstOperator);
+                    firstOperand = displayValue;
+                }
+                changeDisplay();
+            }
+            else if(firstOperator !== null) {
+                if(button.value === 'add') {
+                    secondOperand = displayValue;
+                    secondOperator = 'add';
+                    operate(firstOperator);
+                    console.log(firstOperator);
+                    displayValue = result;
+                }
+                else if(button.value === 'subtract') {
+                    secondOperand = displayValue;
+                    secondOperator = 'subtract';
+                    operate(firstOperator);
+                    console.log(secondOperator);
+                    displayValue = result;
+                }
+                else if(button.value === 'multiply') {
+                    secondOperand = displayValue;
+                    secondOperator = 'multiply';
+                    operate(firstOperator);
+                    console.log(secondOperator);
+                    displayValue = result;
+                }
+                else if(button.value === 'divide') {
+                    secondOperand = displayValue;
+                    secondOperator = 'divide';
+                    operate(firstOperator);
+                    console.log(secondOperator);
+                    displayValue = result;
+                }
+                changeDisplay();
+                firstOperator = secondOperator;
+                firstOperand = result;
+            }
+            else if(button.value === 'equals' && firstOperator !== null) {
+                secondOperator = 'equals';
+                console.log(secondOperator);
             }
             else if(button.value === 'clear') {
-                displayValue = '0'
+                displayValue = '0';
                 firstOperand = null;
                 secondOperand = null;
                 firstOperator = null;
                 secondOperator = null;
+                console.log(firstOperand);
             }
         });
     }); 
@@ -105,22 +156,23 @@ processInput();
     });
 } */
 
-const add = function() {
-    console.log("test1");
-    
+const operate = function(operator) {
+    switch(operator){
+        case 'add':
+            result = Number(firstOperand) + Number(secondOperand);
+            break;
+        case 'subtract':
+            result = Number(firstOperand) - Number(secondOperand);
+            break;
+        case 'multiply':
+            result = Number(firstOperand) * Number(secondOperand);
+            break;
+        case 'divide':
+            result = Number(firstOperand) / Number(secondOperand);
+            break;
+    }
 }
 
-const subtract = function() {
-    console.log("test2");
-}
-
-const multiply = function() {
-    console.log("test3");
-}
-
-const divide = function() {
-    console.log("test4");
-}
 
 /* reducer = (accumulator, currentValue) => accumulator / currentValue;
 result = currentValues.reduce(reducer);
