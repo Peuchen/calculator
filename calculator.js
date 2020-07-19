@@ -21,7 +21,10 @@ const processInput = function() {
                 secondOperand = null;
                 operator = null;
                 result = 0;
-                changeDisplay();
+            }
+            else if(button.value === 'delete') {
+                displayValue = displayValue.substring(0, displayValue.length-1);
+                displayValue.length === 0 ? displayValue = '0' : displayValue;
             }
             else if(button.className === 'operand') {
                 if(button.value === ".") {
@@ -38,11 +41,10 @@ const processInput = function() {
                 else {
                     displayValue += button.value;
                 };
-                changeDisplay();
+                
             }
             else if(operator === null) {
                 firstOperand = displayValue;
-                changeDisplay();
                 assignOperator(button);
             }
             else if(operator !== null) {
@@ -50,9 +52,9 @@ const processInput = function() {
                 operate(operator);
                 displayValue = result;
                 firstOperand = result;
-                changeDisplay();
                 assignOperator(button);
             }
+            changeDisplay();
         });
     }); 
 }
