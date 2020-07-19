@@ -5,23 +5,46 @@
     height: 500px;
     width: 300px;
     border: 1px solid black;
+    border-radius: 5px;
+    background-color: #ecf2ea;
     padding: 10px;
     grid-gap: 10px;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 #display {
     grid-column-start: 1;
     grid-column-end: 5;
     border: 1px solid black;
+    border-radius: 5px;
+    background-color: #fff;
+    font-size: 3.5em;
+    padding: 9px;
 }
 
-#equal, #clear, .operator, .number {
+.operator, .operand, .clear {
     border: 1px solid black;
+    font-weight: 800;
+    border-radius: 5px;
+    font-size: 1em;
 }
 
-#equal, .operator {
+.operand {
+    background-color: #b3d9a7;
+}
+
+.operator, .clear {
+    background-color: #81bf6d;
+}
+
+.operator {
     grid-column-start: 4;
     grid-column-end: 5;
+}
+
+.clear {
+    grid-column-start: 1;
+    grid-column-end: 4;
 }
 
 
