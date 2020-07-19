@@ -35,18 +35,7 @@ const processInput = function() {
             else if(operator === null) {
                 firstOperand = displayValue;
                 changeDisplay();
-                if(button.value === 'add') {
-                    operator = 'add';
-                }
-                else if(button.value === 'subtract') {
-                    operator = 'subtract';
-                }
-                else if(button.value === 'multiply') {
-                    operator = 'multiply';
-                }
-                else if(button.value === 'divide') {
-                    operator = 'divide';
-                }
+                assignOperator(button);
             }
             else if(operator !== null) {
                 secondOperand = displayValue;
@@ -54,27 +43,31 @@ const processInput = function() {
                 displayValue = result;
                 firstOperand = result;
                 changeDisplay();
-                if(button.value === 'add') {
-                    operator = 'add';
-                }
-                else if(button.value === 'subtract') {
-                    operator = 'subtract';
-                }
-                else if(button.value === 'multiply') {
-                    operator = 'multiply';
-                }
-                else if(button.value === 'divide') {
-                    operator = 'divide';
-                }
-                else if(button.value === 'equal') {
-                    operator = null;
-                }
+                assignOperator(button);
             }
         });
     }); 
 }
 
 processInput();
+
+const assignOperator = function(button) {
+    if(button.value === 'add') {
+        operator = 'add';
+    }
+    else if(button.value === 'subtract') {
+        operator = 'subtract';
+    }
+    else if(button.value === 'multiply') {
+        operator = 'multiply';
+    }
+    else if(button.value === 'divide') {
+        operator = 'divide';
+    }
+    else if(button.value === 'equal') {
+        operator = null;
+    }
+};
 
 const operate = function(operator) {
     switch(operator){
