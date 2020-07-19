@@ -24,12 +24,20 @@ const processInput = function() {
                 changeDisplay();
             }
             else if(button.className === 'operand') {
-                if(displayValue === '0' || displayValue === firstOperand) {
+                if(button.value === ".") {
+                    if(!displayValue.includes(".")) {
+                        displayValue += button.value;
+                    }
+                    else if(displayValue.includes(".")) {
+                        alert("You cannot use more than one decimal in one number")
+                    };
+                }
+                else if(displayValue === '0' || displayValue === firstOperand) {
                     displayValue = button.value;
                 }
                 else {
                     displayValue += button.value;
-                }
+                };
                 changeDisplay();
             }
             else if(operator === null) {
@@ -83,7 +91,7 @@ const operate = function(operator) {
         case 'divide':
             result = Number(firstOperand) / Number(secondOperand);
             if(Number(secondOperand) === 0) {
-                result = "Don't divide by 0 ;)";
+                alert("Do not divide by 0 ;)");
             }
             break;
     }
