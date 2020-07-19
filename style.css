@@ -22,7 +22,7 @@
     padding: 9px;
 }
 
-.operator, .operand, .clear {
+.operator, .operand, .clear, .delete {
     border: 1px solid black;
     font-weight: 800;
     border-radius: 5px;
@@ -33,7 +33,7 @@
     background-color: #b3d9a7;
 }
 
-.operator, .clear {
+.operator, .clear, .delete {
     background-color: #81bf6d;
 }
 
