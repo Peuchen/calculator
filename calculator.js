@@ -32,7 +32,7 @@ const processInput = function() {
                         displayValue += button.value;
                     }
                     else if(displayValue.includes(".")) {
-                        alert("You cannot use more than one decimal in one number")
+                        alert("You cannot use multiple decimals in 1 number")
                     };
                 }
                 else if(displayValue === '0' || displayValue === firstOperand) {
@@ -41,6 +41,9 @@ const processInput = function() {
                 else {
                     displayValue += button.value;
                 };
+                if(displayValue.length > 9) {
+                    displayValue = displayValue.substring(0, displayValue.length-1);
+                }
                 
             }
             else if(operator === null) {
@@ -96,5 +99,10 @@ const operate = function(operator) {
                 alert("Do not divide by 0 ;)");
             }
             break;
+    }
+
+    if(String(result).length > 9) {
+        result = Number(String(result).substring(0, 9));
+        alert("Please note: this calculator's display is limited to 9 characters");
     }
 }
