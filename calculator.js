@@ -6,6 +6,11 @@ let secondOperand = null;
 let operator = null;
 let result = 0;
 
+document.addEventListener('keydown', (e) => {
+    const key = document.querySelector(`button[data-key='${e.keyCode}']`);
+    key.click();
+});
+
 function changeDisplay() {
     display.textContent = displayValue;
 };
